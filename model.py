@@ -1,6 +1,7 @@
 from __future__ import absolute_import, division, print_function
 
 import argparse
+import pickle
 import tensorflow as tf
 from polyaxon_client.tracking import Experiment, get_log_level, get_data_paths, get_outputs_path
 from tensorflow.examples.tutorials.mnist import input_data
@@ -21,9 +22,9 @@ def set_logging(log_level=None):
 
 set_logging(get_log_level())
 
-data_paths = list(get_data_paths().values())[0]
-data_paths = "{}/mnist".format(data_paths)
-mnist = input_data.read_data_sets(data_paths, one_hot=False)
+#data_paths = list(get_data_paths().values())[0]
+#data_paths = "{}/mnist".format(data_paths)
+#mnist = input_data.read_data_sets(data_paths, one_hot=False)
 
 
 def get_model_fn(learning_rate, dropout, activation):
@@ -117,6 +118,10 @@ if __name__ == '__main__':
         default=False,
         type=bool
     )
+    parser.add_argument(
+        '--pickle_file',
+        type=str
+    )
 
     args = parser.parse_args()
     arguments = args.__dict__
@@ -129,12 +134,17 @@ if __name__ == '__main__':
     activation = arguments.pop('activation')
     distributed = arguments.pop('distributed')
     num_iterations = arguments.pop('num_iterations')
+    pkl_file = arguments.pop('pickle_file')
     if activation == 'relu':
         activation = tf.nn.relu
     elif activation == 'sigmoid':
         activation = tf.nn.sigmoid
     elif activation == 'linear':
         activation = None
+
+    pkl_file = open('data.pkl', 'rb')
+    mnist = pickle.load(pkl_file)
+    pkl_file.close()
 
     experiment = Experiment()
     if distributed:
