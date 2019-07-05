@@ -6,7 +6,9 @@
 
 A quick start project for polyaxon.
 
-This example is used for the quick start [section in the documentation](https://docs.polyaxon.com/concepts/quick-start/)
+This example is used for the quick start [section in the documentation v0.4](https://v0-4.polyaxon.com/concepts/quick-start/)
+
+> If you are looking for the quick-start example used for the latest version, please go to the [master branch](https://github.com/polyaxon/polyaxon-quick-start) 
 
 This example also includes different `polyaxonfiles`:
 
