@@ -11,7 +11,7 @@
 
 A quick start project for polyaxon.
 
-This example is used for the quick start [section in the documentation](https://polyaxon.com/docs/core/quick-start/)
+This example is used for the quick start [section in the documentation](https://polyaxon.com/docs/intro/quick-start/)
 
 This example also includes different `polyaxonfiles`:
 
