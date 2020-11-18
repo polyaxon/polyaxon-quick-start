@@ -110,4 +110,3 @@ ENV/
 
 # polyaxon configs
 .polyaxon/
-.polyaxonignore
