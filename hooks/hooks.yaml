@@ -5,8 +5,7 @@ description: Runs a tensorboard as a post-success hook
 tags: [examples]
 hooks:
 - trigger: succeeded
-  hubRef: acme/tensorboard
-  connection: slack-notification
+  hubRef: tensorboard
   params:
     uuid: {value: "{{ globals.uuid }}"}
 run:
