@@ -11,8 +11,5 @@ var
 .DS_Store
 .idea
 ./.polyaxon
-automation
-experimentation
-ci
-git-integration
-helpers
+*.egg-info/
+ci/

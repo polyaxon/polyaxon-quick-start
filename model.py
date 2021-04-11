@@ -147,7 +147,7 @@ if __name__ == '__main__':
     tracking.init()
     tracking.log_data_ref(content=X_train, name='x_train')
     tracking.log_data_ref(content=y_train, name='y_train')
-    tracking.log_data_ref(content=X_test, name='X_test')
+    tracking.log_data_ref(content=X_test, name='x_test')
     tracking.log_data_ref(content=y_test, name='y_train')
 
     plx_callback = PolyaxonCallback()
