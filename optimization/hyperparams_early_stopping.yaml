@@ -18,9 +18,12 @@ matrix:
       kind: choice
       value: [5, 10]
   earlyStopping:
-    - metric: accuracy
+    - kind: metric_early_stopping
+      metric: accuracy
       value: 0.9
       optimization: maximize
+    - kind: failure_early_stopping
+      percent: 0.3
 params:
   epochs: {value: 5}
 urlRef: https://raw.githubusercontent.com/polyaxon/polyaxon-quick-start/master/experimentation/typed.yaml
