@@ -16,11 +16,11 @@
 
 import argparse
 
-import keras
 import tensorflow as tf
 
-from keras.datasets import fashion_mnist
-from tensorflow.keras.layers import Dense, Flatten, Conv2D, Dense, Dropout, Activation, MaxPooling2D
+from tensorflow import keras
+from tensorflow.keras.datasets import fashion_mnist
+from tensorflow.keras.layers import Flatten, Conv2D, Dense, Dropout, MaxPooling2D
 from tensorflow.keras.models import Sequential
 from tensorflow.keras import optimizers
 

@@ -1,21 +1,16 @@
 version: 1.1
 kind: operation
 matrix:
-  kind: bayes
-  concurrency: 5
+  kind: hyperopt
+  concurrency: 4
   maxIterations: 10
-  numInitialRuns: 40
+  algorithm: tpe
+  numRuns: 20
   metric:
     name: loss
     optimization: minimize
-  utilityFunction:
-    acquisitionFunction: ucb
-    kappa: 1.2
-    gaussianProcess:
-      kernel: matern
-      lengthScale: 1.0
-      nu: 1.9
-      numRestartsOptimizer: 0
+  tuner:
+    hubRef: hyperopt-tuner
   params:
     learning_rate:
       kind: linspace
@@ -29,4 +24,4 @@ matrix:
     epochs:
       kind: choice
       value: [1, 2, 3]
-urlRef: https://raw.githubusercontent.com/polyaxon/polyaxon-quick-start/master/experimentation/typed.yaml
+pathRef: ../experimentation/typed.yaml

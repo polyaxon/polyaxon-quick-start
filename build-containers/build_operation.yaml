@@ -8,10 +8,9 @@ params:
 runPatch:
   init:
   - dockerfile:
-      image: "tensorflow/tensorflow:2.2.0"
+      image: "tensorflow/tensorflow:2.4.3"
       run:
-      - pip install keras
-      - pip3 install --no-cache-dir -U polyaxon["polyboard","polytune"]
+      - python -m pip install --upgrade pip && python -m pip install keras && python -m pip install --no-cache-dir -U polyaxon["polyboard","polytune"]
       langEnv: 'en_US.UTF-8'
 hubRef: kaniko
 template:
