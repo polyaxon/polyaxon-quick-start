@@ -1,0 +1,19 @@
+version: 1.1
+kind: component
+name: simulator-workbench
+description: Interactive simulator environment for the Polyaxon quick start
+tags: [quick-start, interactive]
+
+plugins:
+  tmux: true
+  sandbox: true
+  ssh: true
+
+run:
+  kind: service
+  init:
+  - git: {url: "https://github.com/polyaxon/polyaxon-quick-start"}
+  container:
+    image: polyaxon/polyaxon-quick-start
+    workingDir: "{{ globals.artifacts_path }}/polyaxon-quick-start"
+    command: ["tail", "-f", "/dev/null"]

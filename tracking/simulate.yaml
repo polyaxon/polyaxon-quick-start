@@ -1,0 +1,37 @@
+version: 1.1
+kind: component
+name: simulated-experiment
+description: Run the quick-start experiment simulator
+tags: [quick-start, simulation]
+
+inputs:
+- {name: epochs, type: int, value: 20, isOptional: true}
+- {name: seed, type: int, value: 42, isOptional: true}
+- {name: batch_size, type: int, value: 64, isOptional: true}
+- {name: learning_rate, type: float, value: 0.001, isOptional: true}
+
+run:
+  kind: job
+  init:
+  - git: {url: "https://github.com/polyaxon/polyaxon-quick-start"}
+  container:
+    image: polyaxon/polyaxon-cli:latest
+    workingDir: "{{ globals.artifacts_path }}/polyaxon-quick-start"
+    command: ["/bin/sh", "-c"]
+    env:
+    - {name: PYTHONPATH, value: /tmp/quick-start-deps}
+    - {name: MPLBACKEND, value: Agg}
+    - {name: MPLCONFIGDIR, value: /tmp/quick-start-matplotlib}
+    args:
+    - >-
+      python3 -m pip install
+      --disable-pip-version-check
+      --no-cache-dir
+      --target=/tmp/quick-start-deps
+      numpy pandas matplotlib &&
+      exec python3 -u tracking/simulate_dl_experiment.py "$@"
+    - quick-start-simulator
+    - "--epochs={{ epochs }}"
+    - "--seed={{ seed }}"
+    - "--batch-size={{ batch_size }}"
+    - "--learning-rate={{ learning_rate }}"
