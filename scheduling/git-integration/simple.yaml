@@ -7,6 +7,5 @@ run:
   kind: job
   container:
     image: polyaxon/polyaxon-quick-start
-    workingDir: "{{ globals.artifacts_path }}/polyaxon-quick-start"
+    workingDir: "{{ globals.artifacts_path }}/polyaxon-quick-start/scheduling"
     command: [python3, model.py]
-

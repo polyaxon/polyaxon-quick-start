@@ -6,7 +6,7 @@ run:
   kind: dag
   operations:
   - name: experiment
-    urlRef: "https://raw.githubusercontent.com/polyaxon/polyaxon-quick-start/master/experimentation/typed.yaml"
+    urlRef: "https://raw.githubusercontent.com/polyaxon/polyaxon-quick-start/master/scheduling/experimentation/typed.yaml"
     params:
       learning_rate:
         value: 0.005

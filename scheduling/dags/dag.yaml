@@ -9,14 +9,14 @@ run:
   kind: dag
   operations:
   - name: experiment
-    urlRef: "https://raw.githubusercontent.com/polyaxon/polyaxon-quick-start/master/experimentation/typed.yaml"
+    urlRef: "https://raw.githubusercontent.com/polyaxon/polyaxon-quick-start/master/scheduling/experimentation/typed.yaml"
     params:
       learning_rate:
         value: 0.005
       epochs:
         value: 10
   - name: tune
-    urlRef: "https://raw.githubusercontent.com/polyaxon/polyaxon-quick-start/master/experimentation/typed.yaml"
+    urlRef: "https://raw.githubusercontent.com/polyaxon/polyaxon-quick-start/master/scheduling/experimentation/typed.yaml"
     params:
       upstream_loss:
         ref: ops.experiment
@@ -59,6 +59,6 @@ run:
         - git: {url: "https://github.com/polyaxon/polyaxon-quick-start"}
         container:
           image: polyaxon/polyaxon-quick-start
-          workingDir: "{{ globals.artifacts_path }}/polyaxon-quick-start"
+          workingDir: "{{ globals.artifacts_path }}/polyaxon-quick-start/scheduling"
           command: [python3, best_models.py]
           args: ["--project={{ globals.project_name }}", "--top={{ top }}"]

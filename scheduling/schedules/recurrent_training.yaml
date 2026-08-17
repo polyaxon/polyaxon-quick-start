@@ -8,5 +8,4 @@ schedule:
 params:
   optimizer: {value: sgd}
   epochs: {value: 1}
-urlRef: https://raw.githubusercontent.com/polyaxon/polyaxon-quick-start/master/experimentation/typed.yaml
-
+urlRef: https://raw.githubusercontent.com/polyaxon/polyaxon-quick-start/master/scheduling/experimentation/typed.yaml
