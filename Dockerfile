@@ -9,4 +9,4 @@ COPY requirements.txt /code
 
 RUN pip install --no-cache-dir -r /code/requirements.txt
 
-COPY model.py /code
+COPY scheduling/model.py /code/scheduling/model.py
