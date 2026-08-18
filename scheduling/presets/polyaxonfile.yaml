@@ -21,7 +21,7 @@ run:
   kind: job
   container:
     image: polyaxon/polyaxon-quick-start
-    command: [python3, "{{ globals.artifacts_path }} + /polyaxon-quick-start/scheduling/model.py"]
+    command: [python3, model.py]
     args: [
       "--conv1_size={{ conv1_size }}",
       "--conv2_size={{ conv2_size }}",
