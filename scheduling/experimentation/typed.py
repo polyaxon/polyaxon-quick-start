@@ -7,7 +7,7 @@ This is the same Polyaxonfile as in typed.yaml using the Python library.
 Note: Running this file using CLI is similar as well:
 
 ```bash
-polyaxon run -pm experimentation/typed.py:component -P epochs=5 -l
+polyaxon run -pm scheduling/experimentation/typed.py:component -P epochs=5 -l
 ```
 
  * -pm: --python-module
