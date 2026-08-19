@@ -1,0 +1,23 @@
+version: 1.1
+kind: component
+name: inline-python-parameter
+inputs:
+  - name: message
+    type: str
+run:
+  kind: job
+  init:
+    - file:
+        content: |
+          import argparse
+
+          parser = argparse.ArgumentParser()
+          parser.add_argument("--message", type=str)
+          args = parser.parse_args()
+          print(args.message)
+        filename: message.py
+  container:
+    image: python:3.11
+    workingDir: "{{ globals.run_artifacts_path }}/uploads"
+    command: [python3, message.py]
+    args: ["--message={{ message }}"]

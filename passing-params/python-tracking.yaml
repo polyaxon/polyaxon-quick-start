@@ -1,0 +1,19 @@
+version: 1.1
+kind: component
+name: python-tracking-parameters
+inputs:
+  - name: message
+    type: str
+run:
+  kind: job
+  init:
+    - file:
+        content: |
+          from polyaxon import tracking
+
+          print(tracking.get_inputs()["message"])
+        filename: main.py
+  container:
+    image: polyaxon/polyaxon-quick-start
+    workingDir: "{{ globals.run_artifacts_path }}/uploads"
+    command: [python3, main.py]

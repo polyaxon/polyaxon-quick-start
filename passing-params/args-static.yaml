@@ -1,0 +1,8 @@
+version: 1.1
+kind: component
+name: static-message
+run:
+  kind: job
+  container:
+    image: busybox:stable
+    command: ["echo", "This is a test"]

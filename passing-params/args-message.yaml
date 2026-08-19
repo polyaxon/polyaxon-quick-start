@@ -1,0 +1,11 @@
+version: 1.1
+kind: component
+name: message-parameter
+inputs:
+  - name: message
+    type: str
+run:
+  kind: job
+  container:
+    image: busybox:stable
+    command: ["echo", "{{ message }}"]

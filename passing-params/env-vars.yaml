@@ -1,0 +1,22 @@
+version: 1.1
+kind: component
+name: environment-variable-parameter
+inputs:
+  - name: message
+    type: str
+run:
+  kind: job
+  init:
+    - file:
+        content: |
+          import os
+
+          print(os.environ.get("MESSAGE"))
+        filename: message.py
+  container:
+    image: python:3.11
+    workingDir: "{{ globals.run_artifacts_path }}/uploads"
+    command: [python3, message.py]
+    env:
+      - name: MESSAGE
+        value: "{{ message }}"

@@ -1,0 +1,13 @@
+version: 1.1
+kind: component
+name: uploaded-python-parameter
+inputs:
+  - name: message
+    type: str
+run:
+  kind: job
+  container:
+    image: python:3.11
+    workingDir: "{{ globals.run_artifacts_path }}/uploads/passing-params/args-python"
+    command: [python3, message.py]
+    args: ["--message={{ message }}"]

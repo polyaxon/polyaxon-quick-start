@@ -1,0 +1,20 @@
+version: 1.1
+kind: component
+name: python-run-client-parameters
+inputs:
+  - name: message
+    type: str
+run:
+  kind: job
+  init:
+    - file:
+        content: |
+          from polyaxon.client import RunClient
+
+          run_client = RunClient()
+          print(run_client.get_inputs()["message"])
+        filename: main.py
+  container:
+    image: polyaxon/polyaxon-quick-start
+    workingDir: "{{ globals.run_artifacts_path }}/uploads"
+    command: [python3, main.py]
