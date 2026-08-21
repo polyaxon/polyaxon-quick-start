@@ -11,10 +11,10 @@ run:
         content: |
           from polyaxon.client import RunClient
 
-          run_client = RunClient()
-          print(run_client.get_inputs()["message"])
+          client = RunClient()
+          print(client.get_inputs())
         filename: main.py
   container:
     image: polyaxon/polyaxon-quick-start
-    workingDir: "{{ globals.run_artifacts_path }}/uploads"
+    workingDir: "{{ globals.artifacts_path }}"
     command: [python3, main.py]

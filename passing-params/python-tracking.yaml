@@ -11,9 +11,10 @@ run:
         content: |
           from polyaxon import tracking
 
-          print(tracking.get_inputs()["message"])
+          tracking.init()
+          print(tracking.TRACKING_RUN.get_inputs())
         filename: main.py
   container:
     image: polyaxon/polyaxon-quick-start
-    workingDir: "{{ globals.run_artifacts_path }}/uploads"
+    workingDir: "{{ globals.artifacts_path }}"
     command: [python3, main.py]
